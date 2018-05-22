@@ -141,7 +141,8 @@ function setup(){
 	rightItems = 0;
 	missedItems = 0;
 	frameRate(60);
-	createCanvas(800, 600);
+	var canvas = createCanvas(800, 600);
+	canvas.parent('game-holder');
 	timeTilSpawn = 120;
 	currentPhrase = "TIME TO START";
 
