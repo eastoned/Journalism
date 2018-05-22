@@ -461,7 +461,7 @@ function mouseReleased(){
 }
 
 function touchMoved(){
-	preventDefault();
+	//preventDefault();
 }
 
 function reset(){
