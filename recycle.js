@@ -461,7 +461,6 @@ function mouseReleased(){
 
 function touchMoved(){
 	preventDefault();
-	//blockMenuHeaderScroll = true;
 }
 
 function reset(){
