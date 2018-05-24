@@ -506,6 +506,7 @@ function mousePressed(){
 	if(state == 0){
 		if(tutorialNum == 0 && mouseX >= 300 && mouseX <= 500 && mouseY <= 360 && mouseY >= 320){
 			tutorialNum++;
+			track1.stop();
 		} else if (tutorialNum > 0 && tutorialNum < 3){
 			tutorialNum++;
 		} else if(tutorialNum == 3){
