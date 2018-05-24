@@ -189,12 +189,10 @@ function draw(){
 
 	switch(state){
 		case 0:
-			if(!track1.isPlaying()){
-				track1.play();
-			}
-			
-			fill(255);
 			if(tutorialNum == 0){
+				if(!track1.isPlaying()){
+				track1.play();
+				}
 
 				gameTimer++;
 			
