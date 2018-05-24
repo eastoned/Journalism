@@ -195,7 +195,6 @@ function draw(){
 			
 			fill(255);
 			if(tutorialNum == 0){
-				background(205);
 
 				gameTimer++;
 			
@@ -228,6 +227,7 @@ function draw(){
 				//text("Show Mayor De Blasio how it’s done.", 580, 130 + (10 * sin(gameTimer/40)));
 				text("Show Mayor De Blasio how it’s done.", 400, 280 + (7 * sin(gameTimer/-30)));
 			} else if (tutorialNum == 1){
+				track1.stop();
 				background(125);
 				textSize(35);
 				text("Put the trash into the right bin.", 400, 550, 700, 100);
@@ -506,7 +506,6 @@ function mousePressed(){
 	if(state == 0){
 		if(tutorialNum == 0 && mouseX >= 300 && mouseX <= 500 && mouseY <= 360 && mouseY >= 320){
 			tutorialNum++;
-			track1.stop();
 		} else if (tutorialNum > 0 && tutorialNum < 3){
 			tutorialNum++;
 		} else if(tutorialNum == 3){
