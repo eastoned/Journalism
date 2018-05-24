@@ -252,6 +252,7 @@ function draw(){
 				deblasioGame = deblasio[0];
 				loopTrack = true;
 			}
+			track2.setLoop(true);
 			if(loopTrack && track1.currentTime() >= track1.duration() - 1){
 				console.log("track switch");
 				track1.stop();

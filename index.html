@@ -8,6 +8,28 @@
     	<script src="p5/addons/p5.sound.min.js"></script>
     	<script src="recycle.js"></script>
 
+    	<script>
+		    window.blockMenuHeaderScroll = false;
+			$(window).on('touchstart', function(e)
+			{
+			    if ($(e.target).closest('#game-holder').length == 1)
+			    {
+			        blockMenuHeaderScroll = true;
+			    }
+			});
+			$(window).on('touchend', function()
+			{
+			    blockMenuHeaderScroll = false;
+			});
+			$(window).on('touchmove', function(e)
+			{
+			    if (blockMenuHeaderScroll)
+			    {
+			        e.preventDefault();
+			    }
+			});
+		</script>
+
 		<!-- custom styles -->
 		<style>
 			html, body {
@@ -30,9 +52,7 @@
 		</style>
 	</head>
 	<body>
-		<h1> the GAme! </h1>
 		<div id="game-holder">
     	</div>
-    	<h3> some info <h3>
 	</body>
 </html>
