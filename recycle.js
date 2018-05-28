@@ -52,6 +52,7 @@ var currentCursor;
 var fontBody, fontTitle;
 var endPos;
 var begPos;
+//needs mute button
 
 function preload(){
 	types[0] = "Organic";
@@ -145,7 +146,7 @@ function setup(){
 	frameRate(60);
 	var canvas = createCanvas(800, 600);
 	canvas.parent('game-holder');
-	timeTilSpawn = 120;
+	timeTilSpawn = 240;
 	currentPhrase = "Let's see whatcha got!";
 
 	bins[0] = new bin(100, 450, types[0]);
@@ -288,7 +289,7 @@ function draw(){
 			}
 
 			for(var i = items.length - 1; i >= 0; i--){
-
+				items[i].display();
 				if(items[i].held){
 					items[i].lift();
 
@@ -301,6 +302,7 @@ function draw(){
 								break;
 							} else {
 								image(outlineBinRed, bins[b].x, bins[b].y, outlineBinGreen.width/5, outlineBinGreen.height/5);
+								items[i].display();
 								break;
 							}
 						} else {
@@ -312,19 +314,22 @@ function draw(){
 				}
 
 				if(items[i].x >= 850){
+					if(!wrongCue.isPlaying()){
+						wrongCue.play();
+						currentPhrase = items[i].phrase;
+					}
 					items.splice(i, 1);
 					missedItems++;
 					console.log("OOPS:"+ missedItems);
 					timeTilSpawn-=.5;
 				}
-
-				items[i].display();
+				
 			}
 			fill(255, 200);
 			rect(550, 110, 450, 120, 30);
 			fill(0);
 			textFont(fontTitle);
-			text(currentPhrase, 550, 110, 450, 115);
+			text(currentPhrase, 550, 110, 449, 115);
 
 			if(deblasioReallyHappy){
 				deblasioGame = deblasio[2];
@@ -597,7 +602,7 @@ function reset(){
 	result = 0;
 	deblasioScore = deblasio[0];
 	deblasioGame = deblasio[0];
-	timeTilSpawn = 120;
+	timeTilSpawn = 240;
 	currentPhrase = "Let's see whatcha got!";
 	rectMode(CENTER);
 	imageMode(CENTER);
