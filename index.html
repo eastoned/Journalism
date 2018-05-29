@@ -9,48 +9,94 @@
     	<script src="recycle.js"></script>
     	<script src="jquery-3.3.1.min.js"></script>
 
-    	<script>
-    		$(document).ready(function(){
-    			document.addEventListener('touchmove', function(e) {
-    				 e.preventDefault();
-				}, false);
-
-    			$("#game-holder").mouseenter(function(){
-    				//alert("You entered p1!");
-    				event.preventDefault();
-   				});
-
-   				$("#game-holder").mouseleave(function(){
-    				alert("You left p1!");
-   				});
-
-			});
-    		
-    	</script>
-
 		<!-- custom styles -->
 		<style>
 			html, body {
-			  touch-action: none;
-			  overflow-x: hidden;
-			  overflow-y: hidden;
-			  margin: 0;
-			  height: 100%;
-			  width: 100%;
-			  overflow: hidden;
 			}
 			body {
-			  position: relative;
-			  padding: 0;
-			  margin: 0;
 			}
 			#game-holder{
-
+			}
+			#button-holder{
+				margin-left: auto;
+				margin-right: auto;
+				left: 0;
+				right: 0;
 			}
 		</style>
 	</head>
 	<body>
+
 		<div align="center" id="game-holder">
+			
     	</div>
+
+    	<div align="center" id="button-holder">
+    		<button id="mode" type="button" onclick="myFunction()">Desktop</button>
+    	</div>
+
+    	<script>
+    		var mobile = false;
+    		function myFunction() {
+    			if(!mobile){
+    			   document.getElementById("game-holder").style.height = "100%";
+				   document.getElementById("game-holder").style.width = "100%";
+				   document.getElementById("game-holder").style.position = "absolute";
+				   document.getElementById("button-holder").style.position = "absolute";
+				   document.getElementById("game-holder").style.top = "0"; 
+				   document.getElementById("game-holder").style.right = "0"; 
+				   document.getElementById("game-holder").style.bottom = "0"; 
+				   document.getElementById("game-holder").style.left = "0";
+				   document.body.style.height = "100%";
+				   document.body.style.width = "100%";
+				   document.body.style.overflow = "hidden";
+				   document.body.style.top = "0";
+				   document.body.style.left = "0";
+				   document.getElementById("mode").innerHTML = "Desktop";
+				   mobile = true;
+    			} else {
+    			   document.getElementById("game-holder").style.height = "";
+				   document.getElementById("game-holder").style.width = "";
+				    document.getElementById("game-holder").style.position = "";
+				    document.getElementById("button-holder").style.position = "";
+				   document.getElementById("game-holder").style.top = ""; 
+				   document.getElementById("game-holder").style.right = ""; 
+				   document.getElementById("game-holder").style.bottom = ""; 
+				   document.getElementById("game-holder").style.left = "";
+				   document.body.style.height = "";
+				   document.body.style.width = "";
+				   document.body.style.overflow = "";
+				   document.body.style.top = "";
+				   document.body.style.left = "";
+				   document.getElementById("mode").innerHTML = "Mobile";
+				   mobile = false;
+    			}
+
+    			console.log("ran");
+			}
+
+    		$(document).ready(function(){
+    			
+				var fixed = document.getElementById('game-holder');
+
+				fixed.addEventListener('touchmove', function(e) {
+
+				        e.preventDefault();
+
+				}, false);
+
+				fixed.addEventListener('mouseover', function(e){
+
+				        e.preventDefault();
+
+				}, false);
+
+				fixed.addEventListener('scroll', function(e){
+					
+				        e.preventDefault();
+
+				}, false);
+			});
+		</script>
 	</body>
 </html>

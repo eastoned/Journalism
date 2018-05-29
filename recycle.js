@@ -38,7 +38,7 @@ var tutorialImages = [];
 var tutorialNum = 0;
 var score = 0;
 var textScore;
-var cityScore = 200;
+var cityScore = 150;
 var scoreX = 0;
 var cityScoreX = 0;
 var result = 0;
@@ -52,7 +52,8 @@ var currentCursor;
 var fontBody, fontTitle;
 var endPos;
 var begPos;
-//needs mute button
+var muteOn, muteOff;
+var mute;
 
 function preload(){
 	types[0] = "Organic";
@@ -68,6 +69,8 @@ function preload(){
 	dLid = loadImage("assets/deblasiobin/lid.png");
 	mouse = loadImage("assets/cursor.png");
 	mouseheld = loadImage("assets/cursorheld.png");
+	muteOff = loadImage("assets/soundButton.png");
+	muteOn = loadImage("assets/soundButtonOff.png");
 
 	fontBody = loadFont("assets/roboto.ttf");
 	fontTitle = loadFont("assets/eczar.ttf");
@@ -130,6 +133,8 @@ function preload(){
 	rightCue.setVolume(.4);
 	wrongCue = loadSound("assets/audio/crash.wav");
 	wrongCue.setVolume(.15);
+
+	mute = true;
 }
 
 function setup(){
@@ -148,6 +153,7 @@ function setup(){
 	canvas.parent('game-holder');
 	timeTilSpawn = 240;
 	currentPhrase = "Let's see whatcha got!";
+	sound = muteOn;
 
 	bins[0] = new bin(100, 450, types[0]);
 	bins[1] = new bin(250, 450, types[1]);
@@ -503,9 +509,32 @@ function draw(){
 			text("Credits:\nGame Design: Easton Self\t\t\t\tIllustrations: Asaki Okamura\t\t\t\tSoundtrack: Sheila Bugal", 25, 560);
 	}
 
+
+	imageMode(CENTER);
+	if(mute){
+		sound = muteOn;
+		track1.setVolume(0);
+		track2.setVolume(0);
+		pileCue.setVolume(0);
+		rightCue.setVolume(0);
+		wrongCue.setVolume(0);
+	} else {
+		sound = muteOff;
+		track1.setVolume(.25);
+		track2.setVolume(.25);
+		pileCue.setVolume(1);
+		rightCue.setVolume(.4);
+		wrongCue.setVolume(.15);
+	}
+	image(sound, 30, 30, sound.width/5, sound.height/5);
+	
 }
 
 function mousePressed(){
+	if(mouseX >= 0 && mouseX <= 40 && mouseY >= 0 && mouseY <= 40){
+		mute = !mute;
+	}
+
 	if(state == 0){
 		if(tutorialNum == 0 && mouseX >= 300 && mouseX <= 500 && mouseY <= 360 && mouseY >= 320){
 			tutorialNum++;
@@ -522,7 +551,7 @@ function mousePressed(){
 	if(state == 1){
 		currentCursor = mouseheld;
 		for(var i = 0; i < items.length; i++){
-			if(dist(mouseX, mouseY, items[i].x, items[i].y) < 40 && !holding){
+			if(dist(mouseX, mouseY, items[i].x, items[i].y) < 45 && !holding){
 				holding = true;
 				items[i].held = true;
 			}
@@ -556,7 +585,7 @@ function mouseReleased(){
 							currentPhrase = goodPhrases[int(random(6))];
 							bins[b].right = true;
 							speed += .075;
-							timeTilSpawn -= .65;
+							timeTilSpawn -= 2;
 							rightCue.play();
 							deblasioSad = true;
 						} else {
