@@ -10,13 +10,18 @@
     	<script src="jquery-3.3.1.min.js"></script>
 
     	<script>
-    		jQuery(document).on( 'touchmove', function( ev )
-			{
-			    if (jQuery( ev.target ).hasClass( 'game-holder' ))
-			    {
-			         ev.preventDefault();
-			    }
+    		$(document).ready(function(){
+    			$("#game-holder").mouseenter(function(){
+    				//alert("You entered p1!");
+    				event.preventDefault();
+   				});
+
+   				$("#game-holder").mouseleave(function(){
+    				alert("You left p1!");
+   				});
+
 			});
+    		
     	</script>
 
 		<!-- custom styles -->
@@ -27,6 +32,7 @@
 			  overflow-y: hidden;
 			  margin: 0;
 			  height: 100%;
+			  width: 100%;
 			  overflow: hidden;
 			}
 			body {
