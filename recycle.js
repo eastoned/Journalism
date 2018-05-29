@@ -69,8 +69,8 @@ function preload(){
 	dLid = loadImage("assets/deblasiobin/lid.png");
 	mouse = loadImage("assets/cursor.png");
 	mouseheld = loadImage("assets/cursorheld.png");
-	muteOff = loadImage("assets/soundButton.png");
-	muteOn = loadImage("assets/soundButtonOff.png");
+	muteOff = loadImage("assets/soundbutton.png");
+	muteOn = loadImage("assets/soundbuttonOff.png");
 
 	fontBody = loadFont("assets/roboto.ttf");
 	fontTitle = loadFont("assets/eczar.ttf");
