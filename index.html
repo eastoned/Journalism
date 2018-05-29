@@ -11,6 +11,10 @@
 
     	<script>
     		$(document).ready(function(){
+    			document.addEventListener('touchmove', function(e) {
+    				 e.preventDefault();
+				}, false);
+
     			$("#game-holder").mouseenter(function(){
     				//alert("You entered p1!");
     				event.preventDefault();
