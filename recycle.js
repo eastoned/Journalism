@@ -54,6 +54,7 @@ var endPos;
 var begPos;
 var muteOn, muteOff;
 var mute;
+var titleText, subtitleText;
 
 function preload(){
 	types[0] = "Organic";
@@ -74,6 +75,9 @@ function preload(){
 
 	fontBody = loadFont("assets/roboto.ttf");
 	fontTitle = loadFont("assets/eczar.ttf");
+
+	titleText = loadImage("assets/title.png");
+	subtitleText = loadImage("assets/subtitle.png");
 
 	tutorialImages[0] = loadImage("assets/tutorial01.png");
 	tutorialImages[1] = loadImage("assets/tutorial02.png");
@@ -209,32 +213,36 @@ function draw(){
 			
 				image(sky, 400, 300, sky.width/3, sky.height/3);
 				image(skyline, 400, 150, skyline.width/3, skyline.height/3);
-				image(deblasioGame, 200 + begPos, 350 + (200 * sin(gameTimer/25)), deblasioGame.width/3, deblasioGame.height/3);
-				image(dLid, 195 + begPos, 255 + (290 * sin(gameTimer/25)), dLid.width/3, dLid.height/3);
-				image(dBin, 195 + begPos, 360 + (20 * sin(gameTimer/25)), dBin.width/2.8, dBin.height/2.8);
-				image(pavement, 400, 550, pavement.width/3, pavement.height/3);
+				image(deblasioGame, 200 + begPos, 350 + (200 * sin(gameTimer/150)), deblasioGame.width/3, deblasioGame.height/3);
+				image(dLid, 195 + begPos, 245 + (240 * sin(gameTimer/150)), dLid.width/3, dLid.height/3);
+				image(dBin, 195 + begPos, 360 + (20 * sin(gameTimer/150)), dBin.width/2.8, dBin.height/2.8);
 				image(wall, 400, 365, wall.width/3, wall.height/3);
-				if(sin(gameTimer/25) >= 0){
+				image(pavement, 400, 540, pavement.width/3, pavement.height/1.77);
+				if(sin(gameTimer/150) >= 0.5){
 					begPos = random(-150, 650);
 				}
-				if(mouseX >= 300 && mouseX <= 500 && mouseY <= 360 && mouseY >= 320){
+
+				textSize(100);
+				fill(255);
+				textFont(fontTitle);
+				image(titleText, 400, 325, titleText.width/1.1, titleText.height/1.1);
+				//text("Let’s clean NYC!", 400, 110 + (10 * sin(gameTimer/40)));
+				textSize(25);
+				//text("Show Mayor De Blasio how it’s done.", 580, 130 + (10 * sin(gameTimer/40)));
+				image(subtitleText, 400, 520);
+				//text("Show Mayor De Blasio how it’s done.", 400, 280 + (7 * sin(gameTimer/-30)));
+
+				if(mouseX >= 300 && mouseX <= 500 && mouseY <= 435 && mouseY >= 395){
 					fill(34, 198, 44, 220);
 				} else {
 					fill(255, 170);
 				}
-				rect(400, 340, 200, 40, 15);
+				rect(400, 415, 200, 40, 15);
 				noStroke();
 				fill(0);
 				textSize(30);
 				textFont(fontBody);
-				text("Play!", 400, 350);
-				textSize(100);
-				fill(255);
-				textFont(fontTitle);
-				text("Let’s clean NYC!", 400, 110 + (10 * sin(gameTimer/40)));
-				textSize(25);
-				//text("Show Mayor De Blasio how it’s done.", 580, 130 + (10 * sin(gameTimer/40)));
-				text("Show Mayor De Blasio how it’s done.", 400, 280 + (7 * sin(gameTimer/-30)));
+				text("Play!", 400, 425);
 			} else if (tutorialNum == 1){
 				image(tutorialImages[0], 450, 150, tutorialImages[0].width/1.3, tutorialImages[0].height/1.3);
 				textSize(35);
@@ -543,7 +551,7 @@ function mousePressed(){
 	}
 
 	if(state == 0){
-		if(tutorialNum == 0 && mouseX >= 300 && mouseX <= 500 && mouseY <= 360 && mouseY >= 320){
+		if(tutorialNum == 0 && mouseX >= 300 && mouseX <= 500 && mouseY <= 435 && mouseY >= 395){
 			tutorialNum++;
 		} else if (tutorialNum > 0 && tutorialNum < 3){
 			tutorialNum++;
