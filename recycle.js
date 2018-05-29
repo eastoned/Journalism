@@ -1,3 +1,4 @@
+p5.disableFriendlyErrors = true;
 var items = [];
 var types = [];
 var bins = [];
