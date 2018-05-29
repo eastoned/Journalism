@@ -75,6 +75,10 @@ function preload(){
 	fontBody = loadFont("assets/roboto.ttf");
 	fontTitle = loadFont("assets/eczar.ttf");
 
+	tutorialImages[0] = loadImage("assets/tutorial01.png");
+	tutorialImages[1] = loadImage("assets/tutorial02.png");
+	tutorialImages[2] = loadImage("assets/tutorial03.png");
+
 	pileImages[0] = loadImage("assets/pile/1.png");
 	pileImages[1] = loadImage("assets/pile/2.png");
 	pileImages[2] = loadImage("assets/pile/3.png");
@@ -232,17 +236,20 @@ function draw(){
 				//text("Show Mayor De Blasio how it’s done.", 580, 130 + (10 * sin(gameTimer/40)));
 				text("Show Mayor De Blasio how it’s done.", 400, 280 + (7 * sin(gameTimer/-30)));
 			} else if (tutorialNum == 1){
-				background(125);
+				image(tutorialImages[0], 450, 150, tutorialImages[0].width/1.3, tutorialImages[0].height/1.3);
 				textSize(35);
-				text("Put the trash into the right bin.", 400, 550, 700, 100);
+				fill(0);
+				text("Put the trash into the right bin.", 400, 100, 700, 100);
 			} else if (tutorialNum == 2){
-				background(255, 0, 0);
+				image(tutorialImages[1], 200, 150, tutorialImages[1].width/1.2, tutorialImages[1].height/1.2);
 				textSize(35);
-				text("Keep up and don’t put the waste into the wrong bin or the trash will pile up.", 400, 500, 700, 100);
+				fill(0);
+				text("Keep up and don’t put the waste into the wrong bin or the trash will pile up.", 400, 100, 700, 100);
 			} else if (tutorialNum == 3){
-				background(0, 255, 0);
+				image(tutorialImages[2], 400, 300, tutorialImages[2].width/1.5, tutorialImages[2].height/1.5);
 				textSize(35);
-				text("Set the High Score and show that you can recycle better than De Blasio’s crew.", 400, 500, 700, 100);
+				fill(0);
+				text("Set the High Score and show that you can recycle better than De Blasio’s crew.", 400, 550, 650, 150);
 			}
 
 			if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
