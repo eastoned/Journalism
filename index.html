@@ -10,9 +10,9 @@
     	<script src="jquery-3.3.1.min.js"></script>
 
     	<script>
-    		jQuery( document ).on( 'touchmove', function( ev )
+    		jQuery(document).on( 'touchmove', function( ev )
 			{
-			    if (jQuery( ev.target ).parents().hasClass( 'game-holder' ))
+			    if (jQuery( ev.target ).hasClass( 'game-holder' ))
 			    {
 			         ev.preventDefault();
 			    }
