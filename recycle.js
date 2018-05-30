@@ -160,7 +160,7 @@ function setup(){
 	frameRate(60);
 	var canvas = createCanvas(800, 600);
 	canvas.parent('game-holder');
-	timeTilSpawn = 240;
+	timeTilSpawn = 160;
 	currentPhrase = "Let's see whatcha got!";
 	sound = muteOn;
 
@@ -211,7 +211,7 @@ function draw(){
 				}
 
 				gameTimer++;
-			
+				console.log(gameTimer);
 				image(sky, 400, 300, sky.width/3, sky.height/3);
 				image(skyline, 400, 150, skyline.width/3, skyline.height/3);
 				image(deblasioGame, 200 + begPos, 350 + (200 * sin(gameTimer/150)), deblasioGame.width/3, deblasioGame.height/3);
@@ -221,6 +221,7 @@ function draw(){
 				image(pavement, 400, 540, pavement.width/3, pavement.height/1.77);
 				if(sin(gameTimer/150) >= 0.5){
 					begPos = random(-150, 650);
+					gameTimer = 450;
 				}
 
 				textSize(100);
@@ -443,18 +444,18 @@ function draw(){
 				textSize(50);
 				if(score <= 0){
 					deblasioScore = deblasio[2];
-					textScore = "Boo!\nYou are a TRASH TURD.";
+					textScore = "Thou art a\nTRASH TURD.";
 				} else if(score <= 50){
-					textScore = "Better luck next time!\nYou are a LITTER LOSER.";
+					textScore = "Better luck next time!\nYou are a COMMON SCUM.";
 					deblasioScore = deblasio[1];
 				} else if (score <= 100){
-					textScore = "So close!\nYou are a CAN COLLECTOR.";
+					textScore = "Meh!\nYou are a CAN COLLECTOR.";
 					deblasioScore = deblasio[0];
 				} else if (score <= 150){
-					textScore = "Congratulations!\nYou are RECYCLING ROYALTY!";
+					textScore = "Damn!\nYou are RECYCLING ROYALTY!";
 					deblasioScore = deblasio[3];
 				} else if (score > 200){
-					textScore = "We kneel before you!\nYou are a GARBAGE GOD!";
+					textScore = "All hail the\nGARBAGE GOD!";
 					deblasioScore = deblasio[4];
 				}
 				textSize(20);
@@ -647,7 +648,7 @@ function reset(){
 	result = 0;
 	deblasioScore = deblasio[0];
 	deblasioGame = deblasio[0];
-	timeTilSpawn = 240;
+	timeTilSpawn = 160;
 	currentPhrase = "Let's see whatcha got!";
 	rectMode(CENTER);
 	imageMode(CENTER);
@@ -676,10 +677,10 @@ class item{
 					this.phrase = "Not from NYC, eh? Pizza belongs in the BROWN bin!";
 					break;
 				case organicImages[4]:
-					this.phrase = "This paper plate is soiled! Off to the ORGANIC bin with it!";
+					this.phrase = "This paper plate is soiled! Off to the ORGANICS bin with it!";
 					break;
 				case organicImages[5]:
-					this.phrase = "Who drinks tea?! Well, put it in the ORGANIC bin.";
+					this.phrase = "Who even drinks tea?! Put it in the ORGANICS.";
 					break;
 			}
 		} else if(type =="Paper"){
@@ -702,16 +703,16 @@ class item{
 					this.phrase = "Clink it right into the BLUE bin.";
 					break;
 				case plasticImages[1]:
-					this.phrase = "What do you think milk cartons are made of? Not milk...PLASTIC!";
+					this.phrase = "You could definitely use more Vitamin A! Put this in the PLASTIC bin.";
 					break;
 				case plasticImages[2]:
 					this.phrase = "Are you huffing paint? This belongs in the METAL bin.";
 					break;
 				case plasticImages[3]:
-					this.phrase = "You have had your lunch, fatty, now at least put the container in the PLASTIC bin!";
+					this.phrase = "Get back to work! And put the container in the PLASTIC bin.";
 					break;
 				case plasticImages[4]:
-					this.phrase = "...might is well put it in your bathtub. It goes in the METAL bin.";
+					this.phrase = "...might as well put it in your bathtub. It goes in the METAL bin.";
 					break;
 			}
 		} else if (type == "Trash"){
@@ -724,7 +725,7 @@ class item{
 					this.phrase = "Your diapers belong in the LANDFILL, babyface!";
 					break;
 				case trashImages[2]:
-					this.phrase = "Don’t be ridiculous. Plastic bags go into the LANDFILL!";
+					this.phrase = "These go into the LANDFILL. And use canvas bags next time!";
 					break;
 				case trashImages[3]:
 					this.phrase = "Poopy di scoop. Scoopy di LANDFILL.";
