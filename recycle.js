@@ -452,7 +452,7 @@ function draw(){
 					textScore = "Meh!\nYou are a CAN COLLECTOR.";
 					deblasioScore = deblasio[0];
 				} else if (score <= 150){
-					textScore = "Damn!\nYou are RECYCLING ROYALTY!";
+					textScore = "Make Way!\nYou are RECYCLING ROYALTY!";
 					deblasioScore = deblasio[3];
 				} else if (score > 200){
 					textScore = "All hail the\nGARBAGE GOD!";
