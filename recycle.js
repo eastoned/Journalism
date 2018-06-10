@@ -523,7 +523,7 @@ function draw(){
 			textAlign(LEFT);
 			textSize(19);
 			fill(255, endPos);
-			text("Credits:\nGame Design: Easton Self\t\t\t\tIllustrations: Asaki Okamura\t\t\t\tSoundtrack: Sheila Bugal", 25, 560);
+			text("Credits:\t\t\t\tGame Concept: Till Daldrup, Tarun Shyam, Nicole Zhong\nGame Design: Easton Self\t\t\t\tIllustrations: Asaki Okamura\t\t\t\tSoundtrack: Sheila Bugal", 25, 560);
 	}
 
 
