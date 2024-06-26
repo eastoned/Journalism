@@ -11,12 +11,6 @@
 
 		<!-- custom styles -->
 		<style>
-			html, body {
-			}
-			body {
-			}
-			#game-holder{
-			}
 			#button-holder{
 				margin-left: auto;
 				margin-right: auto;
@@ -31,55 +25,7 @@
 			
     	</div>
 
-    	<div align="center" id="button-holder">
-    		<button id="mode" type="button" onclick="myFunction()">Mobile</button>
-    	</div>
-
     	<script>
-    		var mobile = false;
-    		function myFunction() {
-    			if(!mobile){
-    			   document.getElementById("game-holder").style.height = "100%";
-				   document.getElementById("game-holder").style.width = "100%";
-				   document.getElementById("game-holder").style.position = "";
-				   document.getElementById("button-holder").style.position = "absolute";
-				   document.getElementById("button-holder").style.top = "";
-				   document.getElementById("game-holder").style.top = "0"; 
-				   document.getElementById("game-holder").style.right = "0"; 
-				   document.getElementById("game-holder").style.bottom = ""; 
-				   document.getElementById("game-holder").style.left = "";
-				   document.getElementById("game-holder").style.float = "right";
-				   document.body.style.height = "100%";
-				   document.body.style.width = "100%";
-				   document.body.style.overflow = "hidden";
-				   document.body.style.position = "absolute";
-				   //document.body.style.top = "0";
-				   //document.body.style.left = "0";
-				   document.getElementById("mode").innerHTML = "Desktop";
-				   mobile = true;
-    			} else {
-    			   document.getElementById("game-holder").style.height = "";
-				   document.getElementById("game-holder").style.width = "";
-				   document.getElementById("game-holder").style.position = "";
-				   document.getElementById("button-holder").style.position = "";
-				   document.getElementById("button-holder").style.top = "";
-				   document.getElementById("game-holder").style.top = ""; 
-				   document.getElementById("game-holder").style.right = ""; 
-				   document.getElementById("game-holder").style.bottom = ""; 
-				   document.getElementById("game-holder").style.left = "";
-				   document.getElementById("game-holder").style.float = "";
-				   document.body.style.height = "";
-				   document.body.style.width = "";
-				   document.body.style.overflow = "";
-				   document.body.style.top = "";
-				   document.body.style.left = "";
-				   document.getElementById("mode").innerHTML = "Mobile";
-				   mobile = false;
-    			}
-
-    			console.log("ran");
-			}
-
     		$(document).ready(function(){
     			
 				var fixed = document.getElementById('game-holder');
